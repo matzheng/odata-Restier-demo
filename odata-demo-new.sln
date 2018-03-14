@@ -5,6 +5,12 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "odata-demo-new", "odata-demo-new\odata-demo-new.csproj", "{A7DAEBF9-0989-4FB2-BA22-DC2428629567}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB Files", "DB Files", "{5BE11549-59D3-44BF-9D9A-3AF42BE67DF8}"
+	ProjectSection(SolutionItems) = preProject
+		Serene2_Default_v1.bacpac = Serene2_Default_v1.bacpac
+		Serene2_Northwind_v1.bacpac = Serene2_Northwind_v1.bacpac
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
