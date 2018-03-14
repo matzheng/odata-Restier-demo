@@ -1,0 +1,1593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Serene2_Default_v1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BusinessUnits">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Name="UnitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ParentUnitId" Type="int" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="30" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdentityNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="Exceptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsProtected" Type="bit" Nullable="false" />
+          <Property Name="Host" Type="nvarchar" MaxLength="100" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" />
+          <Property Name="HTTPMethod" Type="nvarchar" MaxLength="10" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="40" />
+          <Property Name="Source" Type="nvarchar" MaxLength="100" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+          <Property Name="StatusCode" Type="int" />
+          <Property Name="SQL" Type="nvarchar(max)" />
+          <Property Name="DeletionDate" Type="datetime" />
+          <Property Name="FullJson" Type="nvarchar(max)" />
+          <Property Name="ErrorHash" Type="int" />
+          <Property Name="DuplicateCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="LanguageName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MeetingAgendaRelevant">
+          <Key>
+            <PropertyRef Name="AgendaRelevantId" />
+          </Key>
+          <Property Name="AgendaRelevantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgendaId" Type="int" Nullable="false" />
+          <Property Name="ContactId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MeetingAgendas">
+          <Key>
+            <PropertyRef Name="AgendaId" />
+          </Key>
+          <Property Name="AgendaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeetingId" Type="int" Nullable="false" />
+          <Property Name="AgendaNumber" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="AgendaTypeId" Type="int" Nullable="false" />
+          <Property Name="RequestedByContactId" Type="int" />
+          <Property Name="Images" Type="nvarchar(max)" />
+          <Property Name="Attachments" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MeetingAgendaTypes">
+          <Key>
+            <PropertyRef Name="AgendaTypeId" />
+          </Key>
+          <Property Name="AgendaTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MeetingAttendees">
+          <Key>
+            <PropertyRef Name="AttendeeId" />
+          </Key>
+          <Property Name="AttendeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeetingId" Type="int" Nullable="false" />
+          <Property Name="ContactId" Type="int" Nullable="false" />
+          <Property Name="AttendeeType" Type="int" Nullable="false" />
+          <Property Name="AttendanceStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MeetingDecisionRelevant">
+          <Key>
+            <PropertyRef Name="DecisionRelevantId" />
+          </Key>
+          <Property Name="DecisionRelevantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DecisionId" Type="int" Nullable="false" />
+          <Property Name="ContactId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MeetingDecisions">
+          <Key>
+            <PropertyRef Name="DecisionId" />
+          </Key>
+          <Property Name="DecisionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeetingId" Type="int" Nullable="false" />
+          <Property Name="AgendaId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DecisionNumber" Type="int" Nullable="false" />
+          <Property Name="ResponsibleContactId" Type="int" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="ResolutionStatus" Type="int" Nullable="false" />
+          <Property Name="Images" Type="nvarchar(max)" />
+          <Property Name="Attachments" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MeetingLocations">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Meetings">
+          <Key>
+            <PropertyRef Name="MeetingId" />
+          </Key>
+          <Property Name="MeetingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeetingName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MeetingNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="MeetingGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MeetingTypeId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="UnitId" Type="int" />
+          <Property Name="OrganizerContactId" Type="int" />
+          <Property Name="ReporterContactId" Type="int" />
+          <Property Name="InsertUserId" Type="int" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserId" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MeetingTypes">
+          <Key>
+            <PropertyRef Name="MeetingTypeId" />
+          </Key>
+          <Property Name="MeetingTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolePermissions">
+          <Key>
+            <PropertyRef Name="RolePermissionId" />
+          </Key>
+          <Property Name="RolePermissionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="PermissionKey" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPermissions">
+          <Key>
+            <PropertyRef Name="UserPermissionId" />
+          </Key>
+          <Property Name="UserPermissionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PermissionKey" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Granted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPreferences">
+          <Key>
+            <PropertyRef Name="UserPreferenceId" />
+          </Key>
+          <Property Name="UserPreferenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="PreferenceType" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Source" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="86" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="LastDirectoryUpdate" Type="datetime" />
+          <Property Name="UserImage" Type="nvarchar" MaxLength="100" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="InsertUserId" Type="int" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateUserId" Type="int" />
+          <Property Name="IsActive" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Serene2_Default_v1.dbo.VersionInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VersionInfo">
+          <Key>
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Version" Type="bigint" Nullable="false" />
+          <Property Name="AppliedOn" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <Association Name="FK_AgendaRel_AgendaId">
+          <End Role="MeetingAgendas" Type="Self.MeetingAgendas" Multiplicity="1" />
+          <End Role="MeetingAgendaRelevant" Type="Self.MeetingAgendaRelevant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingAgendas">
+              <PropertyRef Name="AgendaId" />
+            </Principal>
+            <Dependent Role="MeetingAgendaRelevant">
+              <PropertyRef Name="AgendaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgendaRel_ContactId">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="MeetingAgendaRelevant" Type="Self.MeetingAgendaRelevant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="MeetingAgendaRelevant">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessUnits_ParentUnit">
+          <End Role="BusinessUnits" Type="Self.BusinessUnits" Multiplicity="0..1" />
+          <End Role="BusinessUnits1" Type="Self.BusinessUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnits">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="BusinessUnits1">
+              <PropertyRef Name="ParentUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacts_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DecisionRel_ContactId">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="MeetingDecisionRelevant" Type="Self.MeetingDecisionRelevant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="MeetingDecisionRelevant">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DecisionRel_DecisionId">
+          <End Role="MeetingDecisions" Type="Self.MeetingDecisions" Multiplicity="1" />
+          <End Role="MeetingDecisionRelevant" Type="Self.MeetingDecisionRelevant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingDecisions">
+              <PropertyRef Name="DecisionId" />
+            </Principal>
+            <Dependent Role="MeetingDecisionRelevant">
+              <PropertyRef Name="DecisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetAgendas_AgendaTypeId">
+          <End Role="MeetingAgendaTypes" Type="Self.MeetingAgendaTypes" Multiplicity="1" />
+          <End Role="MeetingAgendas" Type="Self.MeetingAgendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingAgendaTypes">
+              <PropertyRef Name="AgendaTypeId" />
+            </Principal>
+            <Dependent Role="MeetingAgendas">
+              <PropertyRef Name="AgendaTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetAgendas_MeetingId">
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="1" />
+          <End Role="MeetingAgendas" Type="Self.MeetingAgendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meetings">
+              <PropertyRef Name="MeetingId" />
+            </Principal>
+            <Dependent Role="MeetingAgendas">
+              <PropertyRef Name="MeetingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetAgendas_RequestedBy">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="MeetingAgendas" Type="Self.MeetingAgendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="MeetingAgendas">
+              <PropertyRef Name="RequestedByContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetAttendees_ContactId">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="MeetingAttendees" Type="Self.MeetingAttendees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="MeetingAttendees">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetAttendees_MeetingId">
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="1" />
+          <End Role="MeetingAttendees" Type="Self.MeetingAttendees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meetings">
+              <PropertyRef Name="MeetingId" />
+            </Principal>
+            <Dependent Role="MeetingAttendees">
+              <PropertyRef Name="MeetingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetDecisions_AgendaId">
+          <End Role="MeetingAgendas" Type="Self.MeetingAgendas" Multiplicity="1" />
+          <End Role="MeetingDecisions" Type="Self.MeetingDecisions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingAgendas">
+              <PropertyRef Name="AgendaId" />
+            </Principal>
+            <Dependent Role="MeetingDecisions">
+              <PropertyRef Name="AgendaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetDecisions_AgendaType">
+          <End Role="MeetingAgendaTypes" Type="Self.MeetingAgendaTypes" Multiplicity="1" />
+          <End Role="MeetingDecisions" Type="Self.MeetingDecisions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingAgendaTypes">
+              <PropertyRef Name="AgendaTypeId" />
+            </Principal>
+            <Dependent Role="MeetingDecisions">
+              <PropertyRef Name="DecisionNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetDecisions_MeetingId">
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="1" />
+          <End Role="MeetingDecisions" Type="Self.MeetingDecisions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meetings">
+              <PropertyRef Name="MeetingId" />
+            </Principal>
+            <Dependent Role="MeetingDecisions">
+              <PropertyRef Name="MeetingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetDecisions_RequestedBy">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="MeetingDecisions" Type="Self.MeetingDecisions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="MeetingDecisions">
+              <PropertyRef Name="ResponsibleContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_LocationId">
+          <End Role="MeetingLocations" Type="Self.MeetingLocations" Multiplicity="0..1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingLocations">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_Organizer">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="OrganizerContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_Reporter">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="ReporterContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_TypeId">
+          <End Role="MeetingTypes" Type="Self.MeetingTypes" Multiplicity="1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingTypes">
+              <PropertyRef Name="MeetingTypeId" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="MeetingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_UnitId">
+          <End Role="BusinessUnits" Type="Self.BusinessUnits" Multiplicity="0..1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnits">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermissions_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RolePermissions" Type="Self.RolePermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RolePermissions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermissions_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserPermissions" Type="Self.UserPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserPermissions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Serene2_Default_v1ModelStoreContainer">
+          <EntitySet Name="BusinessUnits" EntityType="Self.BusinessUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exceptions" EntityType="Self.Exceptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingAgendaRelevant" EntityType="Self.MeetingAgendaRelevant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingAgendas" EntityType="Self.MeetingAgendas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingAgendaTypes" EntityType="Self.MeetingAgendaTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingAttendees" EntityType="Self.MeetingAttendees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingDecisionRelevant" EntityType="Self.MeetingDecisionRelevant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingDecisions" EntityType="Self.MeetingDecisions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingLocations" EntityType="Self.MeetingLocations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meetings" EntityType="Self.Meetings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeetingTypes" EntityType="Self.MeetingTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolePermissions" EntityType="Self.RolePermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPermissions" EntityType="Self.UserPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPreferences" EntityType="Self.UserPreferences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VersionInfo].[Version] AS [Version], 
+    [VersionInfo].[AppliedOn] AS [AppliedOn], 
+    [VersionInfo].[Description] AS [Description]
+    FROM [dbo].[VersionInfo] AS [VersionInfo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AgendaRel_AgendaId" Association="Self.FK_AgendaRel_AgendaId">
+            <End Role="MeetingAgendas" EntitySet="MeetingAgendas" />
+            <End Role="MeetingAgendaRelevant" EntitySet="MeetingAgendaRelevant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgendaRel_ContactId" Association="Self.FK_AgendaRel_ContactId">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="MeetingAgendaRelevant" EntitySet="MeetingAgendaRelevant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessUnits_ParentUnit" Association="Self.FK_BusinessUnits_ParentUnit">
+            <End Role="BusinessUnits" EntitySet="BusinessUnits" />
+            <End Role="BusinessUnits1" EntitySet="BusinessUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacts_UserId" Association="Self.FK_Contacts_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DecisionRel_ContactId" Association="Self.FK_DecisionRel_ContactId">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="MeetingDecisionRelevant" EntitySet="MeetingDecisionRelevant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DecisionRel_DecisionId" Association="Self.FK_DecisionRel_DecisionId">
+            <End Role="MeetingDecisions" EntitySet="MeetingDecisions" />
+            <End Role="MeetingDecisionRelevant" EntitySet="MeetingDecisionRelevant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetAgendas_AgendaTypeId" Association="Self.FK_MeetAgendas_AgendaTypeId">
+            <End Role="MeetingAgendaTypes" EntitySet="MeetingAgendaTypes" />
+            <End Role="MeetingAgendas" EntitySet="MeetingAgendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetAgendas_MeetingId" Association="Self.FK_MeetAgendas_MeetingId">
+            <End Role="Meetings" EntitySet="Meetings" />
+            <End Role="MeetingAgendas" EntitySet="MeetingAgendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetAgendas_RequestedBy" Association="Self.FK_MeetAgendas_RequestedBy">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="MeetingAgendas" EntitySet="MeetingAgendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetAttendees_ContactId" Association="Self.FK_MeetAttendees_ContactId">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="MeetingAttendees" EntitySet="MeetingAttendees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetAttendees_MeetingId" Association="Self.FK_MeetAttendees_MeetingId">
+            <End Role="Meetings" EntitySet="Meetings" />
+            <End Role="MeetingAttendees" EntitySet="MeetingAttendees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetDecisions_AgendaId" Association="Self.FK_MeetDecisions_AgendaId">
+            <End Role="MeetingAgendas" EntitySet="MeetingAgendas" />
+            <End Role="MeetingDecisions" EntitySet="MeetingDecisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetDecisions_AgendaType" Association="Self.FK_MeetDecisions_AgendaType">
+            <End Role="MeetingAgendaTypes" EntitySet="MeetingAgendaTypes" />
+            <End Role="MeetingDecisions" EntitySet="MeetingDecisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetDecisions_MeetingId" Association="Self.FK_MeetDecisions_MeetingId">
+            <End Role="Meetings" EntitySet="Meetings" />
+            <End Role="MeetingDecisions" EntitySet="MeetingDecisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetDecisions_RequestedBy" Association="Self.FK_MeetDecisions_RequestedBy">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="MeetingDecisions" EntitySet="MeetingDecisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_LocationId" Association="Self.FK_Meetings_LocationId">
+            <End Role="MeetingLocations" EntitySet="MeetingLocations" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_Organizer" Association="Self.FK_Meetings_Organizer">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_Reporter" Association="Self.FK_Meetings_Reporter">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_TypeId" Association="Self.FK_Meetings_TypeId">
+            <End Role="MeetingTypes" EntitySet="MeetingTypes" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_UnitId" Association="Self.FK_Meetings_UnitId">
+            <End Role="BusinessUnits" EntitySet="BusinessUnits" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermissions_RoleId" Association="Self.FK_RolePermissions_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RolePermissions" EntitySet="RolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermissions_UserId" Association="Self.FK_UserPermissions_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPermissions" EntitySet="UserPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_RoleId" Association="Self.FK_UserRoles_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_UserId" Association="Self.FK_UserRoles_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Serene2_Default_v1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BusinessUnits">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Name="UnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentUnitId" Type="Int32" />
+          <NavigationProperty Name="BusinessUnits1" Relationship="Self.FK_BusinessUnits_ParentUnit" FromRole="BusinessUnits" ToRole="BusinessUnits1" />
+          <NavigationProperty Name="BusinessUnits2" Relationship="Self.FK_BusinessUnits_ParentUnit" FromRole="BusinessUnits1" ToRole="BusinessUnits" />
+          <NavigationProperty Name="Meetings" Relationship="Self.FK_Meetings_UnitId" FromRole="BusinessUnits" ToRole="Meetings" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdentityNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="MeetingAgendaRelevant" Relationship="Self.FK_AgendaRel_ContactId" FromRole="Contacts" ToRole="MeetingAgendaRelevant" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Contacts_UserId" FromRole="Contacts" ToRole="Users" />
+          <NavigationProperty Name="MeetingDecisionRelevant" Relationship="Self.FK_DecisionRel_ContactId" FromRole="Contacts" ToRole="MeetingDecisionRelevant" />
+          <NavigationProperty Name="MeetingAgendas" Relationship="Self.FK_MeetAgendas_RequestedBy" FromRole="Contacts" ToRole="MeetingAgendas" />
+          <NavigationProperty Name="MeetingAttendees" Relationship="Self.FK_MeetAttendees_ContactId" FromRole="Contacts" ToRole="MeetingAttendees" />
+          <NavigationProperty Name="MeetingDecisions" Relationship="Self.FK_MeetDecisions_RequestedBy" FromRole="Contacts" ToRole="MeetingDecisions" />
+          <NavigationProperty Name="Meetings" Relationship="Self.FK_Meetings_Organizer" FromRole="Contacts" ToRole="Meetings" />
+          <NavigationProperty Name="Meetings1" Relationship="Self.FK_Meetings_Reporter" FromRole="Contacts" ToRole="Meetings" />
+        </EntityType>
+        <EntityType Name="Exceptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="ApplicationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsProtected" Type="Boolean" Nullable="false" />
+          <Property Name="Host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="HTTPMethod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IPAddress" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Source" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StatusCode" Type="Int32" />
+          <Property Name="SQL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeletionDate" Type="DateTime" Precision="3" />
+          <Property Name="FullJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorHash" Type="Int32" />
+          <Property Name="DuplicateCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LanguageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MeetingAgendaRelevant">
+          <Key>
+            <PropertyRef Name="AgendaRelevantId" />
+          </Key>
+          <Property Name="AgendaRelevantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgendaId" Type="Int32" Nullable="false" />
+          <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contacts" Relationship="Self.FK_AgendaRel_ContactId" FromRole="MeetingAgendaRelevant" ToRole="Contacts" />
+          <NavigationProperty Name="MeetingAgendas" Relationship="Self.FK_AgendaRel_AgendaId" FromRole="MeetingAgendaRelevant" ToRole="MeetingAgendas" />
+        </EntityType>
+        <EntityType Name="MeetingAgendas">
+          <Key>
+            <PropertyRef Name="AgendaId" />
+          </Key>
+          <Property Name="AgendaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetingId" Type="Int32" Nullable="false" />
+          <Property Name="AgendaNumber" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AgendaTypeId" Type="Int32" Nullable="false" />
+          <Property Name="RequestedByContactId" Type="Int32" />
+          <Property Name="Images" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contacts" Relationship="Self.FK_MeetAgendas_RequestedBy" FromRole="MeetingAgendas" ToRole="Contacts" />
+          <NavigationProperty Name="MeetingAgendaRelevant" Relationship="Self.FK_AgendaRel_AgendaId" FromRole="MeetingAgendas" ToRole="MeetingAgendaRelevant" />
+          <NavigationProperty Name="MeetingAgendaTypes" Relationship="Self.FK_MeetAgendas_AgendaTypeId" FromRole="MeetingAgendas" ToRole="MeetingAgendaTypes" />
+          <NavigationProperty Name="Meetings" Relationship="Self.FK_MeetAgendas_MeetingId" FromRole="MeetingAgendas" ToRole="Meetings" />
+          <NavigationProperty Name="MeetingDecisions" Relationship="Self.FK_MeetDecisions_AgendaId" FromRole="MeetingAgendas" ToRole="MeetingDecisions" />
+        </EntityType>
+        <EntityType Name="MeetingAgendaTypes">
+          <Key>
+            <PropertyRef Name="AgendaTypeId" />
+          </Key>
+          <Property Name="AgendaTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MeetingAgendas" Relationship="Self.FK_MeetAgendas_AgendaTypeId" FromRole="MeetingAgendaTypes" ToRole="MeetingAgendas" />
+          <NavigationProperty Name="MeetingDecisions" Relationship="Self.FK_MeetDecisions_AgendaType" FromRole="MeetingAgendaTypes" ToRole="MeetingDecisions" />
+        </EntityType>
+        <EntityType Name="MeetingAttendees">
+          <Key>
+            <PropertyRef Name="AttendeeId" />
+          </Key>
+          <Property Name="AttendeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetingId" Type="Int32" Nullable="false" />
+          <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <Property Name="AttendeeType" Type="Int32" Nullable="false" />
+          <Property Name="AttendanceStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contacts" Relationship="Self.FK_MeetAttendees_ContactId" FromRole="MeetingAttendees" ToRole="Contacts" />
+          <NavigationProperty Name="Meetings" Relationship="Self.FK_MeetAttendees_MeetingId" FromRole="MeetingAttendees" ToRole="Meetings" />
+        </EntityType>
+        <EntityType Name="MeetingDecisionRelevant">
+          <Key>
+            <PropertyRef Name="DecisionRelevantId" />
+          </Key>
+          <Property Name="DecisionRelevantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DecisionId" Type="Int32" Nullable="false" />
+          <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contacts" Relationship="Self.FK_DecisionRel_ContactId" FromRole="MeetingDecisionRelevant" ToRole="Contacts" />
+          <NavigationProperty Name="MeetingDecisions" Relationship="Self.FK_DecisionRel_DecisionId" FromRole="MeetingDecisionRelevant" ToRole="MeetingDecisions" />
+        </EntityType>
+        <EntityType Name="MeetingDecisions">
+          <Key>
+            <PropertyRef Name="DecisionId" />
+          </Key>
+          <Property Name="DecisionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetingId" Type="Int32" Nullable="false" />
+          <Property Name="AgendaId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DecisionNumber" Type="Int32" Nullable="false" />
+          <Property Name="ResponsibleContactId" Type="Int32" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="ResolutionStatus" Type="Int32" Nullable="false" />
+          <Property Name="Images" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Attachments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contacts" Relationship="Self.FK_MeetDecisions_RequestedBy" FromRole="MeetingDecisions" ToRole="Contacts" />
+          <NavigationProperty Name="MeetingAgendas" Relationship="Self.FK_MeetDecisions_AgendaId" FromRole="MeetingDecisions" ToRole="MeetingAgendas" />
+          <NavigationProperty Name="MeetingAgendaTypes" Relationship="Self.FK_MeetDecisions_AgendaType" FromRole="MeetingDecisions" ToRole="MeetingAgendaTypes" />
+          <NavigationProperty Name="MeetingDecisionRelevant" Relationship="Self.FK_DecisionRel_DecisionId" FromRole="MeetingDecisions" ToRole="MeetingDecisionRelevant" />
+          <NavigationProperty Name="Meetings" Relationship="Self.FK_MeetDecisions_MeetingId" FromRole="MeetingDecisions" ToRole="Meetings" />
+        </EntityType>
+        <EntityType Name="MeetingLocations">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Meetings" Relationship="Self.FK_Meetings_LocationId" FromRole="MeetingLocations" ToRole="Meetings" />
+        </EntityType>
+        <EntityType Name="Meetings">
+          <Key>
+            <PropertyRef Name="MeetingId" />
+          </Key>
+          <Property Name="MeetingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetingName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MeetingNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MeetingGuid" Type="Guid" Nullable="false" />
+          <Property Name="MeetingTypeId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="OrganizerContactId" Type="Int32" />
+          <Property Name="ReporterContactId" Type="Int32" />
+          <Property Name="InsertUserId" Type="Int32" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserId" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BusinessUnits" Relationship="Self.FK_Meetings_UnitId" FromRole="Meetings" ToRole="BusinessUnits" />
+          <NavigationProperty Name="Contacts" Relationship="Self.FK_Meetings_Organizer" FromRole="Meetings" ToRole="Contacts" />
+          <NavigationProperty Name="Contacts1" Relationship="Self.FK_Meetings_Reporter" FromRole="Meetings" ToRole="Contacts" />
+          <NavigationProperty Name="MeetingAgendas" Relationship="Self.FK_MeetAgendas_MeetingId" FromRole="Meetings" ToRole="MeetingAgendas" />
+          <NavigationProperty Name="MeetingAttendees" Relationship="Self.FK_MeetAttendees_MeetingId" FromRole="Meetings" ToRole="MeetingAttendees" />
+          <NavigationProperty Name="MeetingDecisions" Relationship="Self.FK_MeetDecisions_MeetingId" FromRole="Meetings" ToRole="MeetingDecisions" />
+          <NavigationProperty Name="MeetingLocations" Relationship="Self.FK_Meetings_LocationId" FromRole="Meetings" ToRole="MeetingLocations" />
+          <NavigationProperty Name="MeetingTypes" Relationship="Self.FK_Meetings_TypeId" FromRole="Meetings" ToRole="MeetingTypes" />
+        </EntityType>
+        <EntityType Name="MeetingTypes">
+          <Key>
+            <PropertyRef Name="MeetingTypeId" />
+          </Key>
+          <Property Name="MeetingTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Meetings" Relationship="Self.FK_Meetings_TypeId" FromRole="MeetingTypes" ToRole="Meetings" />
+        </EntityType>
+        <EntityType Name="RolePermissions">
+          <Key>
+            <PropertyRef Name="RolePermissionId" />
+          </Key>
+          <Property Name="RolePermissionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="PermissionKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_RolePermissions_RoleId" FromRole="RolePermissions" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RolePermissions" Relationship="Self.FK_RolePermissions_RoleId" FromRole="Roles" ToRole="RolePermissions" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_RoleId" FromRole="Roles" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="UserPermissions">
+          <Key>
+            <PropertyRef Name="UserPermissionId" />
+          </Key>
+          <Property Name="UserPermissionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PermissionKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Granted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserPermissions_UserId" FromRole="UserPermissions" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserPreferences">
+          <Key>
+            <PropertyRef Name="UserPreferenceId" />
+          </Key>
+          <Property Name="UserPreferenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="PreferenceType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_UserRoles_RoleId" FromRole="UserRoles" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserRoles_UserId" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Source" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="86" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastDirectoryUpdate" Type="DateTime" Precision="3" />
+          <Property Name="UserImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="InsertUserId" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="Int32" />
+          <Property Name="IsActive" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Contacts" Relationship="Self.FK_Contacts_UserId" FromRole="Users" ToRole="Contacts" />
+          <NavigationProperty Name="UserPermissions" Relationship="Self.FK_UserPermissions_UserId" FromRole="Users" ToRole="UserPermissions" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRoles_UserId" FromRole="Users" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="VersionInfo">
+          <Key>
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Version" Type="Int64" Nullable="false" />
+          <Property Name="AppliedOn" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_BusinessUnits_ParentUnit">
+          <End Role="BusinessUnits" Type="Self.BusinessUnits" Multiplicity="0..1" />
+          <End Role="BusinessUnits1" Type="Self.BusinessUnits" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnits">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="BusinessUnits1">
+              <PropertyRef Name="ParentUnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_UnitId">
+          <End Role="BusinessUnits" Type="Self.BusinessUnits" Multiplicity="0..1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnits">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgendaRel_ContactId">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="MeetingAgendaRelevant" Type="Self.MeetingAgendaRelevant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="MeetingAgendaRelevant">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contacts_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Contacts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DecisionRel_ContactId">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="MeetingDecisionRelevant" Type="Self.MeetingDecisionRelevant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="MeetingDecisionRelevant">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetAgendas_RequestedBy">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="MeetingAgendas" Type="Self.MeetingAgendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="MeetingAgendas">
+              <PropertyRef Name="RequestedByContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetAttendees_ContactId">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+          <End Role="MeetingAttendees" Type="Self.MeetingAttendees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="MeetingAttendees">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetDecisions_RequestedBy">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="MeetingDecisions" Type="Self.MeetingDecisions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="MeetingDecisions">
+              <PropertyRef Name="ResponsibleContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_Organizer">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="OrganizerContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_Reporter">
+          <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacts">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="ReporterContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AgendaRel_AgendaId">
+          <End Role="MeetingAgendas" Type="Self.MeetingAgendas" Multiplicity="1" />
+          <End Role="MeetingAgendaRelevant" Type="Self.MeetingAgendaRelevant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingAgendas">
+              <PropertyRef Name="AgendaId" />
+            </Principal>
+            <Dependent Role="MeetingAgendaRelevant">
+              <PropertyRef Name="AgendaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetAgendas_AgendaTypeId">
+          <End Role="MeetingAgendaTypes" Type="Self.MeetingAgendaTypes" Multiplicity="1" />
+          <End Role="MeetingAgendas" Type="Self.MeetingAgendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingAgendaTypes">
+              <PropertyRef Name="AgendaTypeId" />
+            </Principal>
+            <Dependent Role="MeetingAgendas">
+              <PropertyRef Name="AgendaTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetAgendas_MeetingId">
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="1" />
+          <End Role="MeetingAgendas" Type="Self.MeetingAgendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meetings">
+              <PropertyRef Name="MeetingId" />
+            </Principal>
+            <Dependent Role="MeetingAgendas">
+              <PropertyRef Name="MeetingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetDecisions_AgendaId">
+          <End Role="MeetingAgendas" Type="Self.MeetingAgendas" Multiplicity="1" />
+          <End Role="MeetingDecisions" Type="Self.MeetingDecisions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingAgendas">
+              <PropertyRef Name="AgendaId" />
+            </Principal>
+            <Dependent Role="MeetingDecisions">
+              <PropertyRef Name="AgendaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetDecisions_AgendaType">
+          <End Role="MeetingAgendaTypes" Type="Self.MeetingAgendaTypes" Multiplicity="1" />
+          <End Role="MeetingDecisions" Type="Self.MeetingDecisions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingAgendaTypes">
+              <PropertyRef Name="AgendaTypeId" />
+            </Principal>
+            <Dependent Role="MeetingDecisions">
+              <PropertyRef Name="DecisionNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetAttendees_MeetingId">
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="1" />
+          <End Role="MeetingAttendees" Type="Self.MeetingAttendees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meetings">
+              <PropertyRef Name="MeetingId" />
+            </Principal>
+            <Dependent Role="MeetingAttendees">
+              <PropertyRef Name="MeetingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DecisionRel_DecisionId">
+          <End Role="MeetingDecisions" Type="Self.MeetingDecisions" Multiplicity="1" />
+          <End Role="MeetingDecisionRelevant" Type="Self.MeetingDecisionRelevant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingDecisions">
+              <PropertyRef Name="DecisionId" />
+            </Principal>
+            <Dependent Role="MeetingDecisionRelevant">
+              <PropertyRef Name="DecisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MeetDecisions_MeetingId">
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="1" />
+          <End Role="MeetingDecisions" Type="Self.MeetingDecisions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meetings">
+              <PropertyRef Name="MeetingId" />
+            </Principal>
+            <Dependent Role="MeetingDecisions">
+              <PropertyRef Name="MeetingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_LocationId">
+          <End Role="MeetingLocations" Type="Self.MeetingLocations" Multiplicity="0..1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingLocations">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meetings_TypeId">
+          <End Role="MeetingTypes" Type="Self.MeetingTypes" Multiplicity="1" />
+          <End Role="Meetings" Type="Self.Meetings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MeetingTypes">
+              <PropertyRef Name="MeetingTypeId" />
+            </Principal>
+            <Dependent Role="Meetings">
+              <PropertyRef Name="MeetingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermissions_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="RolePermissions" Type="Self.RolePermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="RolePermissions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_RoleId">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermissions_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserPermissions" Type="Self.UserPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserPermissions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_UserId">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Serene2_Default_v1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BusinessUnits" EntityType="Self.BusinessUnits" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" />
+          <EntitySet Name="Exceptions" EntityType="Self.Exceptions" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" />
+          <EntitySet Name="MeetingAgendaRelevant" EntityType="Self.MeetingAgendaRelevant" />
+          <EntitySet Name="MeetingAgendas" EntityType="Self.MeetingAgendas" />
+          <EntitySet Name="MeetingAgendaTypes" EntityType="Self.MeetingAgendaTypes" />
+          <EntitySet Name="MeetingAttendees" EntityType="Self.MeetingAttendees" />
+          <EntitySet Name="MeetingDecisionRelevant" EntityType="Self.MeetingDecisionRelevant" />
+          <EntitySet Name="MeetingDecisions" EntityType="Self.MeetingDecisions" />
+          <EntitySet Name="MeetingLocations" EntityType="Self.MeetingLocations" />
+          <EntitySet Name="Meetings" EntityType="Self.Meetings" />
+          <EntitySet Name="MeetingTypes" EntityType="Self.MeetingTypes" />
+          <EntitySet Name="RolePermissions" EntityType="Self.RolePermissions" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="UserPermissions" EntityType="Self.UserPermissions" />
+          <EntitySet Name="UserPreferences" EntityType="Self.UserPreferences" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" />
+          <AssociationSet Name="FK_BusinessUnits_ParentUnit" Association="Self.FK_BusinessUnits_ParentUnit">
+            <End Role="BusinessUnits" EntitySet="BusinessUnits" />
+            <End Role="BusinessUnits1" EntitySet="BusinessUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_UnitId" Association="Self.FK_Meetings_UnitId">
+            <End Role="BusinessUnits" EntitySet="BusinessUnits" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgendaRel_ContactId" Association="Self.FK_AgendaRel_ContactId">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="MeetingAgendaRelevant" EntitySet="MeetingAgendaRelevant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contacts_UserId" Association="Self.FK_Contacts_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Contacts" EntitySet="Contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DecisionRel_ContactId" Association="Self.FK_DecisionRel_ContactId">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="MeetingDecisionRelevant" EntitySet="MeetingDecisionRelevant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetAgendas_RequestedBy" Association="Self.FK_MeetAgendas_RequestedBy">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="MeetingAgendas" EntitySet="MeetingAgendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetAttendees_ContactId" Association="Self.FK_MeetAttendees_ContactId">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="MeetingAttendees" EntitySet="MeetingAttendees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetDecisions_RequestedBy" Association="Self.FK_MeetDecisions_RequestedBy">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="MeetingDecisions" EntitySet="MeetingDecisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_Organizer" Association="Self.FK_Meetings_Organizer">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_Reporter" Association="Self.FK_Meetings_Reporter">
+            <End Role="Contacts" EntitySet="Contacts" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AgendaRel_AgendaId" Association="Self.FK_AgendaRel_AgendaId">
+            <End Role="MeetingAgendas" EntitySet="MeetingAgendas" />
+            <End Role="MeetingAgendaRelevant" EntitySet="MeetingAgendaRelevant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetAgendas_AgendaTypeId" Association="Self.FK_MeetAgendas_AgendaTypeId">
+            <End Role="MeetingAgendaTypes" EntitySet="MeetingAgendaTypes" />
+            <End Role="MeetingAgendas" EntitySet="MeetingAgendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetAgendas_MeetingId" Association="Self.FK_MeetAgendas_MeetingId">
+            <End Role="Meetings" EntitySet="Meetings" />
+            <End Role="MeetingAgendas" EntitySet="MeetingAgendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetDecisions_AgendaId" Association="Self.FK_MeetDecisions_AgendaId">
+            <End Role="MeetingAgendas" EntitySet="MeetingAgendas" />
+            <End Role="MeetingDecisions" EntitySet="MeetingDecisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetDecisions_AgendaType" Association="Self.FK_MeetDecisions_AgendaType">
+            <End Role="MeetingAgendaTypes" EntitySet="MeetingAgendaTypes" />
+            <End Role="MeetingDecisions" EntitySet="MeetingDecisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetAttendees_MeetingId" Association="Self.FK_MeetAttendees_MeetingId">
+            <End Role="Meetings" EntitySet="Meetings" />
+            <End Role="MeetingAttendees" EntitySet="MeetingAttendees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DecisionRel_DecisionId" Association="Self.FK_DecisionRel_DecisionId">
+            <End Role="MeetingDecisions" EntitySet="MeetingDecisions" />
+            <End Role="MeetingDecisionRelevant" EntitySet="MeetingDecisionRelevant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MeetDecisions_MeetingId" Association="Self.FK_MeetDecisions_MeetingId">
+            <End Role="Meetings" EntitySet="Meetings" />
+            <End Role="MeetingDecisions" EntitySet="MeetingDecisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_LocationId" Association="Self.FK_Meetings_LocationId">
+            <End Role="MeetingLocations" EntitySet="MeetingLocations" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meetings_TypeId" Association="Self.FK_Meetings_TypeId">
+            <End Role="MeetingTypes" EntitySet="MeetingTypes" />
+            <End Role="Meetings" EntitySet="Meetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermissions_RoleId" Association="Self.FK_RolePermissions_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RolePermissions" EntitySet="RolePermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_RoleId" Association="Self.FK_UserRoles_RoleId">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermissions_UserId" Association="Self.FK_UserPermissions_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPermissions" EntitySet="UserPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_UserId" Association="Self.FK_UserRoles_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Serene2_Default_v1ModelStoreContainer" CdmEntityContainer="Serene2_Default_v1Entities">
+          <EntitySetMapping Name="BusinessUnits">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.BusinessUnits">
+              <MappingFragment StoreEntitySet="BusinessUnits">
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentUnitId" ColumnName="ParentUnitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.Contacts">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IdentityNo" ColumnName="IdentityNo" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exceptions">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.Exceptions">
+              <MappingFragment StoreEntitySet="Exceptions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsProtected" ColumnName="IsProtected" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="HTTPMethod" ColumnName="HTTPMethod" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="SQL" ColumnName="SQL" />
+                <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
+                <ScalarProperty Name="FullJson" ColumnName="FullJson" />
+                <ScalarProperty Name="ErrorHash" ColumnName="ErrorHash" />
+                <ScalarProperty Name="DuplicateCount" ColumnName="DuplicateCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.Languages">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingAgendaRelevant">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.MeetingAgendaRelevant">
+              <MappingFragment StoreEntitySet="MeetingAgendaRelevant">
+                <ScalarProperty Name="AgendaRelevantId" ColumnName="AgendaRelevantId" />
+                <ScalarProperty Name="AgendaId" ColumnName="AgendaId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingAgendas">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.MeetingAgendas">
+              <MappingFragment StoreEntitySet="MeetingAgendas">
+                <ScalarProperty Name="AgendaId" ColumnName="AgendaId" />
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="AgendaNumber" ColumnName="AgendaNumber" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AgendaTypeId" ColumnName="AgendaTypeId" />
+                <ScalarProperty Name="RequestedByContactId" ColumnName="RequestedByContactId" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingAgendaTypes">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.MeetingAgendaTypes">
+              <MappingFragment StoreEntitySet="MeetingAgendaTypes">
+                <ScalarProperty Name="AgendaTypeId" ColumnName="AgendaTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingAttendees">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.MeetingAttendees">
+              <MappingFragment StoreEntitySet="MeetingAttendees">
+                <ScalarProperty Name="AttendeeId" ColumnName="AttendeeId" />
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="AttendeeType" ColumnName="AttendeeType" />
+                <ScalarProperty Name="AttendanceStatus" ColumnName="AttendanceStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingDecisionRelevant">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.MeetingDecisionRelevant">
+              <MappingFragment StoreEntitySet="MeetingDecisionRelevant">
+                <ScalarProperty Name="DecisionRelevantId" ColumnName="DecisionRelevantId" />
+                <ScalarProperty Name="DecisionId" ColumnName="DecisionId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingDecisions">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.MeetingDecisions">
+              <MappingFragment StoreEntitySet="MeetingDecisions">
+                <ScalarProperty Name="DecisionId" ColumnName="DecisionId" />
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="AgendaId" ColumnName="AgendaId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DecisionNumber" ColumnName="DecisionNumber" />
+                <ScalarProperty Name="ResponsibleContactId" ColumnName="ResponsibleContactId" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="ResolutionStatus" ColumnName="ResolutionStatus" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Attachments" ColumnName="Attachments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingLocations">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.MeetingLocations">
+              <MappingFragment StoreEntitySet="MeetingLocations">
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meetings">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.Meetings">
+              <MappingFragment StoreEntitySet="Meetings">
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="MeetingName" ColumnName="MeetingName" />
+                <ScalarProperty Name="MeetingNumber" ColumnName="MeetingNumber" />
+                <ScalarProperty Name="MeetingGuid" ColumnName="MeetingGuid" />
+                <ScalarProperty Name="MeetingTypeId" ColumnName="MeetingTypeId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="OrganizerContactId" ColumnName="OrganizerContactId" />
+                <ScalarProperty Name="ReporterContactId" ColumnName="ReporterContactId" />
+                <ScalarProperty Name="InsertUserId" ColumnName="InsertUserId" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeetingTypes">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.MeetingTypes">
+              <MappingFragment StoreEntitySet="MeetingTypes">
+                <ScalarProperty Name="MeetingTypeId" ColumnName="MeetingTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolePermissions">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.RolePermissions">
+              <MappingFragment StoreEntitySet="RolePermissions">
+                <ScalarProperty Name="RolePermissionId" ColumnName="RolePermissionId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="PermissionKey" ColumnName="PermissionKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPermissions">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.UserPermissions">
+              <MappingFragment StoreEntitySet="UserPermissions">
+                <ScalarProperty Name="UserPermissionId" ColumnName="UserPermissionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PermissionKey" ColumnName="PermissionKey" />
+                <ScalarProperty Name="Granted" ColumnName="Granted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPreferences">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.UserPreferences">
+              <MappingFragment StoreEntitySet="UserPreferences">
+                <ScalarProperty Name="UserPreferenceId" ColumnName="UserPreferenceId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PreferenceType" ColumnName="PreferenceType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.UserRoles">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="LastDirectoryUpdate" ColumnName="LastDirectoryUpdate" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="InsertUserId" ColumnName="InsertUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VersionInfo">
+            <EntityTypeMapping TypeName="Serene2_Default_v1Model.VersionInfo">
+              <MappingFragment StoreEntitySet="VersionInfo">
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="AppliedOn" ColumnName="AppliedOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69f47aaf5b154bbe9bc53192e6303260" Name="Diagram1">
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Categories" Width="1.5" PointX="3.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.CategoryLang" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.CustomerCustomerDemo" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.CustomerDemographics" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.CustomerDetails" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.CustomerRepresentatives" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Customers" Width="1.5" PointX="3.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.DragDropSample" Width="1.5" PointX="8.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Employees" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Notes" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Order_Details" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Orders" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.ProductLang" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.ProductLog" Width="1.5" PointX="10.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Products" Width="1.5" PointX="6" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Region" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Shippers" Width="1.5" PointX="3.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Suppliers" Width="1.5" PointX="3.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.Territories" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Northwind_v1Model.VersionInfo" Width="1.5" PointX="10.75" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_CustomerCustomerDemo" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_CustomerCustomerDemo_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_CustomerDetails_LastContactedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_Orders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_Employees_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_Orders_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_Order_Details_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_Order_Details_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_Orders_Shippers" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_Products_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.FK_Territories_Region" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Northwind_v1Model.EmployeeTerritories" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

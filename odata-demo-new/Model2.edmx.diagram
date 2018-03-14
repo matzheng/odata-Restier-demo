@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="269ec94884a44280a94c10f239524c8b" Name="Diagram1">
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.BusinessUnits" Width="1.5" PointX="9" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.Contacts" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.Exceptions" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.Languages" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.MeetingAgendaRelevant" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.MeetingAgendas" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.MeetingAgendaTypes" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.MeetingAttendees" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.MeetingDecisionRelevant" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.MeetingDecisions" Width="1.5" PointX="13.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.MeetingLocations" Width="1.5" PointX="9" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.Meetings" Width="1.5" PointX="11.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.MeetingTypes" Width="1.5" PointX="9" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.RolePermissions" Width="1.5" PointX="6" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.Roles" Width="1.5" PointX="3.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.UserPermissions" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.UserPreferences" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.UserRoles" Width="1.5" PointX="6" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.Users" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Serene2_Default_v1Model.VersionInfo" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_BusinessUnits_ParentUnit" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_Meetings_UnitId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_AgendaRel_ContactId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_Contacts_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_DecisionRel_ContactId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_MeetAgendas_RequestedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_MeetAttendees_ContactId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_MeetDecisions_RequestedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_Meetings_Organizer" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_Meetings_Reporter" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_AgendaRel_AgendaId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_MeetAgendas_AgendaTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_MeetAgendas_MeetingId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_MeetDecisions_AgendaId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_MeetDecisions_AgendaType" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_MeetAttendees_MeetingId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_DecisionRel_DecisionId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_MeetDecisions_MeetingId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_Meetings_LocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_Meetings_TypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_RolePermissions_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_UserRoles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_UserPermissions_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Serene2_Default_v1Model.FK_UserRoles_UserId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
