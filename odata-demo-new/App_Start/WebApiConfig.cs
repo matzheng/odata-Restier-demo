@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.OData.Extensions;
 
 namespace odata_demo_new
 {
@@ -16,6 +17,7 @@ namespace odata_demo_new
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.Filter().Expand().Select().OrderBy().MaxTop(null).Count();
 
             config.MapRestierRoute<EntityFrameworkApi<Serene2_Northwind_v1Entities>>(
                "Northwind",
