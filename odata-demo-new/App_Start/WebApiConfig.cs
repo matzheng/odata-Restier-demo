@@ -23,7 +23,7 @@ namespace odata_demo_new
                new RestierBatchHandler(GlobalConfiguration.DefaultServer)).Wait();
 
             config.MapRestierRoute<EntityFrameworkApi<Serene2_Default_v1Entities>>(
-               "Default",
+               "DefaultLT",
                "api/DefaultLT",
                new RestierBatchHandler(GlobalConfiguration.DefaultServer)).Wait();
 
